@@ -12,6 +12,8 @@ int score = 0;
 
 Car car1 = new Car(90,230);
 Car car2 = new Car(90,400);
+Car car3 = new Car(600,470);
+Car car4 = new Car(600, 300);
 
 void setup()
 {
@@ -39,6 +41,15 @@ void draw()
   
   car1.display();
   car2.display();
+  car3.display();
+  car4.display();
+  
+  car1.speed();
+  car2.speed();
+  car3.speed();
+  car4.speed();
+  
+  car1.intersects(car1);
   
   if(carRX > 800)
     carRX = 0;
@@ -105,11 +116,37 @@ class Car
   void display() 
   {
     if(getY() == 230 || getY() == 400)
-      image(carR, getX(), getY());
+      image(carR, carX +=9, getY());
       
-    
-      image(carL, getX(), getY());
+    if(getY() == 470 || getY() == 300)
+      image(carL, carX-=2, getY());
    }
+   
+   void speed()
+   {
+     if(carX>= 800)
+     carX = 10;
+     
+     
+     if(carX < -5)
+     carX = 790;
+     
+   }
+   
+   
+boolean intersects(Car car) 
+{
+      if ((frogY > car.getY() && frogY < car.getY()+50) && (frogX > car.getX() && frogX < car.getX()+100))
+      {
+             return true;
+      }
+      else 
+      {
+             return false;
+      }
+}
+
+
 
   /* if(carLX == frogX && carLY == frogY)
   {
@@ -125,4 +162,6 @@ class Car
     frogX = 370;
   }*/
     
+
+
 }
