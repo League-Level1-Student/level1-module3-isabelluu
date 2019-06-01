@@ -39,8 +39,13 @@ public class Jukebox implements Runnable {
      	new Song("harrystyles.mp3");
      	new Song("Streetcar.mp3");
      	
+     	String repeat = "y";
+     
      	
-     	String answer = JOptionPane.showInputDialog("Pick a song. A. La Vie en Rose B. From the Dining Room Table C. Streetcar");
+     while(repeat == "y")
+     {
+     	String answer = JOptionPane.showInputDialog("Pick a song. "
+     			+ "A. La Vie en Rose B. From the Dining Room Table C. Streetcar");
      	
      	if(answer.equals("A"))
      	{
@@ -57,6 +62,8 @@ public class Jukebox implements Runnable {
      		C.play();
      	}
      	
+     	
+     	
 		/*
 		 * 4. Create a user interface for your Jukebox so that the user can to
 		 * choose which song to play. You can use can use a different button for
@@ -64,7 +71,29 @@ public class Jukebox implements Runnable {
 		 * cover is clicked, stop the currently playing song, and play the one
 		 * that was selected.
 		 */
-    }
+     	
+     	
+     	repeat = JOptionPane.showInputDialog("Would you like to choose another song?");
+     	
+     	
+     	if(repeat.equals("y") && answer.equals("A"))
+     	{
+     		A.stop();
+     	}
+     	
+     	else if(repeat.equals("y") && answer.equals("B"))
+     	{
+     		B.stop();
+     	}
+     	
+     	else if(repeat.equals("y") && answer.equals("C"))
+     	{
+     		C.stop();
+     	}
+     	
+     	
+     }
+   }
     
     
 	/* Use this method to add album covers to your Panel. */
@@ -72,6 +101,8 @@ public class Jukebox implements Runnable {
 		URL imageURL = getClass().getResource(fileName);
 		Icon icon = new ImageIcon(imageURL);
 		return new JLabel(icon);
+		
+
 	}
 
 }
