@@ -5,5 +5,13 @@ public class CowTimerRunner {
 		/* Make a CowTimer, set its time and start it.
 		 * Use a short delay (seconds) when testing, then try with longer delays */
 
+		CowTimer timer = new CowTimer(3);
+		
+		
+		timer.start();
+		
+	
+	
+
 	}
 }
